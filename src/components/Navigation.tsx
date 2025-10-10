@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Cpu } from './Icons';
+import { Cpu, Play, X } from './Icons';
 
 const Navigation: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCoursesOpen, setIsCoursesOpen] = useState(false);
+  const [isTrialModalOpen, setIsTrialModalOpen] = useState(false);
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -33,16 +34,31 @@ const Navigation: React.FC = () => {
   const isActivePath = (path: string) => location.pathname === path;
 
   return (
+    <>
     <nav className="fixed top-0 left-0 right-0 z-50 nav-glass">
+    <button
+        onClick={() => setIsTrialModalOpen(true)}
+        className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[color:var(--primary-teal)] to-[color:var(--primary-teal-light)] hover:from-[color:var(--primary-teal-dark)] hover:to-[color:var(--primary-teal)] text-white rounded-xl font-medium text-sm transition-all duration-300 hover:scale-105 shadow-lg"
+      >
+        <Play className="w-4 h-4" />
+        <span>直播回放</span>
+      </button>
+
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-[color:var(--primary-teal)] to-[color:var(--primary-teal-light)] rounded-lg flex items-center justify-center shadow-lg">
-              <Cpu className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-base-50 font-bold text-lg">化工DCS教学系统</span>
-          </Link>
+          {/* Trial Button and Logo */}
+          <div className="flex items-center space-x-4">
+            {/* Trial Experience Button */}
+            
+
+            {/* Logo */}
+            <Link to="/" className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-[color:var(--primary-teal)] to-[color:var(--primary-teal-light)] rounded-lg flex items-center justify-center shadow-lg">
+                <Cpu className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-base-50 font-bold text-lg">化工DCS教学系统</span>
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -153,6 +169,65 @@ const Navigation: React.FC = () => {
         )}
       </div>
     </nav>
+
+    {/* Trial Video Modal */}
+    {isTrialModalOpen && (
+      <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4">
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+          onClick={() => setIsTrialModalOpen(false)}
+        />
+
+        {/* Modal Content */}
+        <div className="relative w-full max-w-5xl bg-gradient-to-br from-gray-900 to-black rounded-2xl shadow-2xl border border-[color:var(--primary-teal)]/30 overflow-hidden">
+          {/* Header */}
+          <div className="flex items-center justify-between p-6 border-b border-[color:var(--primary-teal)]/20">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-[color:var(--primary-teal)] to-[color:var(--primary-teal-light)] rounded-lg flex items-center justify-center">
+                <Play className="w-6 h-6 text-white" />
+              </div>
+              <h2 className="text-2xl font-bold text-white">课程直播回放</h2>
+            </div>
+            <button
+              onClick={() => setIsTrialModalOpen(false)}
+              className="w-10 h-10 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+            >
+              <X className="w-5 h-5 text-white" />
+            </button>
+          </div>
+
+          {/* Video Container */}
+          <div className="relative bg-black" style={{ paddingBottom: '56.25%' }}>
+            <video
+              className="absolute inset-0 w-full h-full"
+              controls
+              autoPlay
+              src="https://ddcz-1315997005.cos.ap-nanjing.myqcloud.com/static/video/web_teach/recuYJjyh9OmjU.mov"
+            >
+              您的浏览器不支持视频播放
+            </video>
+          </div>
+
+          {/* Footer */}
+          <div className="p-6 bg-gradient-to-r from-[color:var(--primary-teal)]/10 to-[color:var(--primary-teal-light)]/10 border-t border-[color:var(--primary-teal)]/20">
+            <div className="flex items-center justify-between">
+              <p className="text-white/80">
+                观看化工DCS分布式控制系统的完整课程回放，深入学习自动化控制核心技术
+              </p>
+              <button
+                onClick={() => setIsTrialModalOpen(false)}
+                className="px-6 py-2 bg-gradient-to-r from-[color:var(--primary-teal)] to-[color:var(--primary-teal-light)] hover:from-[color:var(--primary-teal-dark)] hover:to-[color:var(--primary-teal)] text-white rounded-lg font-medium transition-all hover:scale-105"
+              >
+                关闭
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    )}
+    </>
   );
 };
 

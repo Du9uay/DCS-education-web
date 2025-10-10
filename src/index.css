@@ -53,7 +53,6 @@ body {
   background: linear-gradient(135deg, #0f1419 0%, #1a2832 50%, #1e3238 100%);
   color: var(--text-primary);
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
 code {

@@ -349,10 +349,10 @@ const DCSvsPLCPage: React.FC = () => {
           </Link>
           
           <Link
-            to="/course-summary"
+            to="/course-test"
             className="btn-primary rounded-xl shadow-lg transition-all duration-300 flex items-center space-x-2"
           >
-            <span>下一页：课程总结</span>
+            <span>已完成，参与课堂测试</span>
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

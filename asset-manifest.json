@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/DCS-education-web/static/css/main.3d228b9e.css",
-    "main.js": "/DCS-education-web/static/js/main.8d7b4e15.js",
+    "main.css": "/DCS-education-web/static/css/main.25ca8169.css",
+    "main.js": "/DCS-education-web/static/js/main.a06f3acd.js",
     "index.html": "/DCS-education-web/index.html",
-    "main.3d228b9e.css.map": "/DCS-education-web/static/css/main.3d228b9e.css.map",
-    "main.8d7b4e15.js.map": "/DCS-education-web/static/js/main.8d7b4e15.js.map"
+    "main.25ca8169.css.map": "/DCS-education-web/static/css/main.25ca8169.css.map",
+    "main.a06f3acd.js.map": "/DCS-education-web/static/js/main.a06f3acd.js.map"
   },
   "entrypoints": [
-    "static/css/main.3d228b9e.css",
-    "static/js/main.8d7b4e15.js"
+    "static/css/main.25ca8169.css",
+    "static/js/main.a06f3acd.js"
   ]
 }
